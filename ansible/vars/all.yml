@@ -1,0 +1,36 @@
+---
+server:
+    install: '1'
+    timezone: UTC
+    locale: es_ES.UTF-8
+vagrant_local:
+    install: '1'
+    vm: { base_box: trusty64, hostname: crm-web, ip: 10.0.1.2, memory: '512', sharedfolder: ./, useVagrantCloud: '1', syncType: nfs }
+apache:
+    install: '1'
+    docroot: /vagrant/crm-web/web
+    servername: crm.web
+crm_web:
+    install: '1'
+    root: /vagrant/crm-web
+mariadb:
+    install: '1'
+    root_password: '123'
+    database: crm
+    user: comercial
+    password: comercial
+    dump: ''
+php:
+    install: '1'
+    ppa: php5-5.6
+    packages: [php5-cli, php5-intl, php5-mcrypt, php5-curl, php5-dbg, php5-odbc, php5-sybase, php5-xdebug]
+
+
+nodejs_do_bower_install: false
+nodejs_update_npm: false
+nodejs_global_packages: ['bower']
+nodejs_user: 'vagrant'
+nodejs_major_version: 5
+nodejs_minor_version: 'x'
+nodejs_app_root: '/usr/local/bin/'
+

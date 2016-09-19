@@ -1,0 +1,76 @@
+---
+# application tasks to be customized and to run after the main provision
+
+
+# INSTALL NODEJS & NPM & BOWER
+- name: 'Add Node.js PPA'
+  tags: 'nodejs'
+  become: 'yes'
+  become_method: 'sudo'
+  shell: "curl --silent --location https://deb.nodesource.com/setup_{{ nodejs_major_version }}.{{ nodejs_minor_version }} | bash -"
+
+- name: 'Install Node.js'
+  tags: 'nodejs'
+  become: 'yes'
+  become_method: 'sudo'
+  apt: >
+    pkg=nodejs
+- name: 'Update npm'
+  tags:
+    - 'nodejs'
+    - 'npm'
+  become: 'yes'
+  become_method: 'sudo'
+  npm: >
+    name=npm
+    state=latest
+    global=yes
+    registry=https://registry.npmjs.org
+  when: 'nodejs_update_npm | bool'
+
+- name: 'Install npm global packages'
+  tags:
+    - 'nodejs'
+    - 'npm'
+    - 'bower'
+  become: 'yes'
+  become_method: 'sudo'
+  npm: >
+    name={{ item }}
+    state=present
+    global=yes
+    registry=http://registry.npmjs.org
+  with_items: '{{ nodejs_global_packages }}'
+
+
+# INSTALL COMPOSER
+- name: download composer
+  get_url:
+    url: https://getcomposer.org/installer
+    dest: /tmp/installer
+  tags: composer
+
+- name: install composer
+  shell: cat /tmp/installer | php -- --install-dir=/usr/local/bin
+  args:
+    creates: /usr/local/bin/composer
+  tags: composer
+
+- name: rename composer.phar to composer
+  shell: mv /usr/local/bin/composer.phar /usr/local/bin/composer
+  args:
+    creates: /usr/local/bin/composer
+  tags: composer
+
+- name: make composer executable
+  file: 
+    path: /usr/local/bin/composer
+    mode: a+x
+    state: file
+  tags: composer
+
+
+# UPDATE crm-web DEPENDENCIES
+- name: clone crm-web repo
+  git: repo=https://github.com/Huertix/symfony-crm-tasc.git dest=/vagrant/crm-web
+  register: gitclone
