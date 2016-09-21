@@ -50,6 +50,6 @@
 
 - name: Copy git config
   sudo: yes
-  template: src=.gitconfig.tpl dest=/home/vagrant/.gitconfig:
+  template: src=.gitconfig.tpl dest=/home/vagrant/.gitconfig
 
 
