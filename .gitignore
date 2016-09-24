@@ -1,2 +1,4 @@
-crm-web
-.vagrant
+/crm-web/
+/.vagrant/
+/.idea/
+/asignaciones/

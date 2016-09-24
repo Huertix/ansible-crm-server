@@ -8,6 +8,6 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lol =  log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
 [push]
 	default = matching
