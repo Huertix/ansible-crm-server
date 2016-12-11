@@ -17,6 +17,11 @@ Commands:
 
 **Migrations**          ./bin/console doctrine:migrations:diff
                         ./bin/console doctrine:migrations:migrate
+                        
+**Fake Dummy Data**     ./bin/console doctrine:fixtures:load
+                        composer require --dev doctrine/doctrine-fixtures-bundle nelmio/alice
+                        add bundle to kernel
+                        prepare content from src/AppBundle/DataFix.../ORM/*
 
 
 
