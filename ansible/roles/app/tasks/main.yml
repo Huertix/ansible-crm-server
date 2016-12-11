@@ -15,6 +15,7 @@
   become_method: 'sudo'
   apt: >
     pkg=nodejs
+
 - name: 'Update npm'
   tags:
     - 'nodejs'
@@ -70,7 +71,7 @@
   tags: composer
 
 
-# UPDATE crm-web DEPENDENCIES
-- name: clone crm-web repo
-  git: repo=https://github.com/Huertix/symfony-crm-tasc.git dest=/vagrant/crm-web
-  register: gitclone
+## UPDATE crm-web DEPENDENCIES
+#- name: clone crm-web repo
+#  git: repo=https://github.com/Huertix/symfony-crm-tasc.git dest=/vagrant/crm-web
+#  register: gitclone

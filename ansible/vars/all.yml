@@ -23,7 +23,7 @@ mariadb:
 php:
     install: '1'
     ppa: php5-5.6
-    packages: [php5-cli, php5-intl, php5-mcrypt, php5-curl, php5-dbg, php5-odbc, php5-sybase, php5-xdebug, php5-mysql]
+    packages: [php5-cli, php5-intl, php5-mcrypt, php5-curl, php5-dbg, php5-odbc, php5-sybase, php5-xdebug]
 
 
 nodejs_do_bower_install: false

@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
             "--name", "crm.web",
             "--memory", 1024,
             "--natdnshostresolver1", "on",
-            "--cpus", 1,
+            "--cpus", 2,
         ]
     end
 

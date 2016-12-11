@@ -52,4 +52,42 @@
   sudo: yes
   template: src=.gitconfig.tpl dest=/home/vagrant/.gitconfig
 
+# SWAP
+- name: 'Create 2Gbs swap file'
+  tags: 'Swap'
+  become: 'yes'
+  become_method: 'sudo'
+  shell: "fallocate -l 2G /swapfile"
+
+- name: 'Permissions'
+  tags: 'Swap'
+  become: 'yes'
+  become_method: 'sudo'
+  shell: "chmod 600 /swapfile"
+
+- name: 'set up the swap space'
+  tags: 'Swap'
+  become: 'yes'
+  become_method: 'sudo'
+  shell: "mkswap /swapfile"
+
+- name: 'enable'
+  tags: 'Swap'
+  become: 'yes'
+  become_method: 'sudo'
+  shell: "swapon /swapfile"
+
+- name: 'Check'
+  tags: 'Swap'
+  become: 'yes'
+  become_method: 'sudo'
+  shell: "swapon -s"
+
+- name: 'Add to fstab'
+  tags: 'Swap'
+  become: 'yes'
+  become_method: 'sudo'
+  shell: "echo '/swapfile none swap sw 0 0' >> /etc/fstab"
+
+
 
