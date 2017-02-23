@@ -13,6 +13,8 @@
     - git
     - vim
     - build-essential
+    - libxrender1
+    - libfontconfig  
 
 - name: Install Extra Packages
   sudo: yes
@@ -39,14 +41,6 @@
 - name: Configure MSSQL connection for freetds driver
   sudo: yes
   template: src=freetds.conf.tpl dest=/etc/freetds/freetds.conf
-
-- name: Copy vim file rc
-  sudo: yes
-  template: src=.vimrc.tpl dest=/home/vagrant/.vimrc
-
-- name: Copy vim file info
-  sudo: yes
-  template: src=.viminfo.tpl dest=/home/vagrant/.viminfo
 
 - name: Copy git config
   sudo: yes

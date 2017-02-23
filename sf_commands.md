@@ -3,7 +3,7 @@ Commands:
 
 **Run local server:**   ./bin/console server:run
 **Run bd commands:**    php app/console doctrine:query:sql "SELECT * FROM MY_TABLE"
-**Check Routes:**       php ap/console debug:route
+**Check Routes:**       ./bin/console debug:route
 **Clear Cache**         ./bin/console cache:clear --env=prod
 **Create DB**           ./bin/console doctrine:database:create
 **Create Tables,just show sql coomand**       ./bin/console doctrine:schema:update --dump-sql

@@ -5,14 +5,14 @@ server:
     locale: es_ES.UTF-8
 vagrant_local:
     install: '1'
-    vm: { base_box: trusty64, hostname: crm.web, ip: 10.0.1.2, memory: '1024', sharedfolder: ./, useVagrantCloud: '1', syncType: nfs }
+    vm: { base_box: trusty64, hostname: tasc.app, ip: 10.0.1.2, memory: '1024', sharedfolder: ./, useVagrantCloud: '1', syncType: nfs }
 apache:
     install: '1'
-    docroot: /vagrant/crm-web/web
-    servername: crm.web
-crm_web:
+    docroot: /vagrant/tasc-app/web
+    servername: tasc.app
+tasc_app:
     install: '1'
-    root: /vagrant/crm-web
+    root: /vagrant/tasc-app
 mariadb:
     install: '1'
     root_password: '123'

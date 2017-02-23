@@ -25,7 +25,7 @@ end
 Vagrant.configure("2") do |config|
 
     config.vm.provider :virtualbox do |v|
-        v.name = "crm.web"
+        v.name = "tasc.app"
         v.customize [
             "modifyvm", :id,
             "--name", "crm.web",
