@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
         v.name = "tasc.app"
         v.customize [
             "modifyvm", :id,
-            "--name", "crm.web",
+            "--name", "tasc.app",
             "--memory", 1024,
             "--natdnshostresolver1", "on",
             "--cpus", 2,
