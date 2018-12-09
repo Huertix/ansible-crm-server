@@ -37,7 +37,8 @@ Vagrant.configure("2") do |config|
 
     config.vm.box = "ubuntu/trusty64"
     
-    config.vm.network "forwarded_port", guest: 80, host: 4000
+    #config.vm.network "forwarded_port", guest: 80, host: 4000 
+    config.vm.network "forwarded_port", guest: 443, host: 4000 
     config.vm.network "forwarded_port", guest: 4500, host: 4500
     config.vm.network "private_network", ip: "10.0.1.2"
     config.ssh.forward_agent = true
