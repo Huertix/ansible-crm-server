@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
     config.vm.network "forwarded_port", guest: 443, host: 4000 
     config.vm.network "forwarded_port", guest: 4500, host: 4500
     config.vm.network "private_network", ip: "10.0.1.2"
-    config.ssh.forward_agent = true
+ config.ssh.forward_agent = true
 
     # If ansible is in your path it will provision from your HOST machine
     # If ansible is not found in the path it will be instaled in the VM and provisioned from there
@@ -54,6 +54,9 @@ Vagrant.configure("2") do |config|
     else
         config.vm.provision :shell, path: "ansible/windows.sh", args: ["default"]
     end
-
-    config.vm.synced_folder "./", "/vagrant", type: "nfs"
+  config.vm.synced_folder "./", "/vagrant",
+    :owner => 'vagrant',
+    :group => 'www-data',
+    :mount_options => ['dmode=775', 'fmode=775']
+  # config.vm.synced_folder "./", "/vagrant", type: "nfs"
 end
