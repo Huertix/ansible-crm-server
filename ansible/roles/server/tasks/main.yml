@@ -1,10 +1,10 @@
 ---
 - name: Update apt
-  sudo: yes
+  # sudo: yes
   apt: update_cache=yes
 
 - name: Install System Packages
-  sudo: yes
+  # sudo: yes
   apt: pkg={{ item }} state=latest
   with_items:
     - curl
@@ -17,33 +17,33 @@
     - libfontconfig  
 
 - name: Install Extra Packages
-  sudo: yes
+#  sudo: yes
   apt: pkg={{ item }} state=latest
   with_items: server.packages
   when: server.packages is defined
 
 - name: Configure the timezone
-  sudo: yes
+#  sudo: yes
   template: src=timezone.tpl dest=/etc/timezone
 
 - name: More Configure the timezone
-  sudo: yes
+#  sudo: yes
   file: src=/usr/share/zoneinfo/{{server.timezone}} dest=/etc/localtime state=link force=yes backup=yes
 
 - name: Set default system language pack
   shell: locale-gen {{server.locale}}
-  sudo: yes
+#  sudo: yes
 
 - name: Ensure freetds packages are installed
   apt: name={{item}} state=latest
   with_items: freetds-bin
 
 - name: Configure MSSQL connection for freetds driver
-  sudo: yes
+#  sudo: yes
   template: src=freetds.conf.tpl dest=/etc/freetds/freetds.conf
 
 - name: Copy git config
-  sudo: yes
+#  sudo: yes
   template: src=.gitconfig.tpl dest=/home/vagrant/.gitconfig
 
 # SWAP

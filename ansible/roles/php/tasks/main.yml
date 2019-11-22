@@ -8,15 +8,15 @@
 #  apt: update_cache=yes
 
 - name: Install php5
-  sudo: yes
+#  sudo: yes
   apt: pkg=php5 state=latest
 
 - name: Install php5-fpm
-  sudo: yes
+#  sudo: yes
   apt: pkg=php5-fpm state=latest
 
 - name: Install PHP Packages
-  sudo: yes
+#  sudo: yes
   apt: pkg="{{ item }}" state=latest
   with_items: [php5-cli, php5-intl, php5-mcrypt, php5-curl, php5-dbg, php5-odbc, php5-sybase, php5-xdebug, php5-mysql]
 
